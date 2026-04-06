@@ -52,7 +52,7 @@ LTI was founded in response to an ATS market dominated by expensive platforms wi
 
 ### 1.5 Lean Canvas
 
-```
+```text
 ┌──────────────────────┬───────────────────────┬─────────────────────┐
 │     PROBLEM          │   SOLUTION            │  UNIQUE VALUE       │
 │                      │                       │  PROPOSITION        │
@@ -128,7 +128,7 @@ LTI was founded in response to an ATS market dominated by expensive platforms wi
 - 8a. An internal employee refers a candidate through the referral module.
 - 10a. A candidate is automatically rejected and receives a notification with an option to join the talent pool.
 
-```
+```plantuml
 @startuml
 left to right direction
 actor "Recruiter" as R
@@ -190,7 +190,7 @@ UC9 ..> UC7 : <<include>>
 - 6a. No common availability exists; the system suggests alternative time slots.
 - 8a. The system generates an AI-assisted interview summary from notes or transcription.
 
-```
+```plantuml
 @startuml
 left to right direction
 actor "Recruiter" as R
@@ -253,7 +253,7 @@ UC9 --> UC10
 - 5b. The Candidate does not respond within the deadline → the system sends an automatic reminder.
 - 7a. The Hiring Manager opts not to send feedback to rejected candidates.
 
-```
+```plantuml
 @startuml
 left to right direction
 actor "Recruiter" as R
@@ -510,7 +510,7 @@ UC10 --> HRIS
 
 ### 3.2 Entity Relationship Diagram (ER)
 
-```
+```text
 ┌──────────┐       ┌──────────────┐       ┌─────────────┐
 │ Company  │1────N │    User      │       │  Department │
 │          │1────N │              │       │             │
@@ -621,7 +621,7 @@ LTI ATS follows an **event-driven microservices architecture** deployed cloud-na
 
 ### 4.2 High-Level Architecture Diagram
 
-```
+```text
 ┌───────────────────────────────────────────────────────────────────────────┐
 │                           CLIENTS                                         │
 │                                                                           │
@@ -706,7 +706,7 @@ The deep dive focuses on the **Application Service**, as it is the central compo
 
 ### 5.1 Level 1 — System Context
 
-```
+```text
 ┌───────────────────────────────────────────────────────────┐
 │                      PEOPLE                               │
 │                                                           │
@@ -741,7 +741,7 @@ The deep dive focuses on the **Application Service**, as it is the central compo
 
 ### 5.2 Level 2 — Containers (within LTI ATS)
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                        LTI ATS System                           │
 │                                                                 │
@@ -784,7 +784,7 @@ The deep dive focuses on the **Application Service**, as it is the central compo
 
 ### 5.3 Level 3 — Components of the Application Service
 
-```
+```text
 ┌───────────────────────────────────────────────────────────────────────┐
 │                       APPLICATION SERVICE                             │
 │                                                                       │
@@ -854,7 +854,7 @@ The deep dive focuses on the **Application Service**, as it is the central compo
 
 This level shows the internal classes/modules of the **Pipeline Manager** component, the most complex within the Application Service.
 
-```
+```text
 ┌───────────────────────────────────────────────────────────────────┐
 │                      PIPELINE MANAGER                             │
 │                                                                   │
