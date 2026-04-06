@@ -584,20 +584,20 @@
 - **Summary:** Show which sourcing channels produce the most and best hires so recruiters can focus their budget and effort
 
 #### Use Case
-- **As a** Rachel (Recruiter)
+- **As a** Ana (HR Director / People Ops Lead)
 - **I want to** see a breakdown of application volume and hire rate by sourcing channel
 - **so that** I can invest recruiting budget in the channels that deliver the best results and cut underperforming ones
 
 #### Acceptance Criteria
 
-- **Scenario:** Recruiter views source effectiveness metrics
+- **Scenario:** Ana views source effectiveness metrics
 - **Given:** My company has received applications from at least 3 channels (e.g., LinkedIn, Indeed, career site) over the last 90 days
 - **When:** I open the "Source Effectiveness" section of the Analytics dashboard
 - **Then:** I see a table listing each channel with: total applications received, number advanced past screening, number of offers made, number hired, and hire rate percentage (hired / total applications)
 
 ---
 
-- **Scenario:** Recruiter filters source report by date range
+- **Scenario:** Ana filters source report by date range
 - **Given:** I am viewing the source effectiveness report
 - **When:** I change the date range filter from "All time" to "Last 30 days"
 - **Then:** All metrics in the report update to reflect only applications received within the selected period, within 3 seconds

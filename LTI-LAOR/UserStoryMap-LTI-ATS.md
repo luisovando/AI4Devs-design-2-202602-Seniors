@@ -22,7 +22,7 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 ## Story Map — Overview (Backbone)
 
-```
+```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  ACTIVITY 1          ACTIVITY 2          ACTIVITY 3          ACTIVITY 4
  Create & Configure  Publish & Attract   Screen & Filter     Evaluate Candidates
@@ -81,7 +81,7 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 | 🟢 MVP | Preview the candidate-facing application form | US-02 |
 | 🟡 R2 | Add optional screening questions (not knockout, but informational) | — |
 | 🟡 R2 | Set minimum required skills from a standard taxonomy | — |
-| 🔵 R3 | Configure AI-minimum match score threshold for auto-advancement | US-05 |
+| 🔵 R3 | Configure AI-minimum match score threshold for auto-advancement | US-06 |
 
 ---
 
@@ -119,8 +119,8 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 | Priority | Task | User Story Ref |
 |---|---|---|
-| 🟢 MVP | Candidate submits application via career site or job board apply link | US-04 |
-| 🟢 MVP | Candidate uploads CV (PDF / DOCX) and answers knockout questions | US-02, US-04 |
+| 🟢 MVP | Candidate submits application via career site or job board apply link | US-05 |
+| 🟢 MVP | Candidate uploads CV (PDF / DOCX) and answers knockout questions | US-02, US-05 |
 | 🟡 R2 | Candidate can track application status in a public-facing portal | — |
 | 🔵 R3 | Candidate receives auto-confirmation email upon submission | — |
 | 🔵 R3 | Embed career site widget on company website (no redirect needed) | — |
@@ -137,12 +137,12 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 | Priority | Task | User Story Ref |
 |---|---|---|
-| 🟢 MVP | System parses submitted CV and populates structured candidate profile | US-04 |
+| 🟢 MVP | System parses submitted CV and populates structured candidate profile | US-05 |
 | 🟢 MVP | System applies knockout question logic and auto-rejects disqualified candidates | US-02 |
-| 🟢 MVP | System checks for duplicates and blacklisted candidates; flags or auto-rejects | US-06 |
-| 🟢 MVP | System calculates AI semantic match score (0–100) per candidate-job pair | US-05 |
-| 🟡 R2 | System generates short score explanation (top 3 strengths, top 2 gaps) | US-05 |
-| 🟡 R2 | Flag low-confidence parsed fields for manual recruiter review | US-04 |
+| 🟢 MVP | System checks for duplicates and blacklisted candidates; flags or auto-rejects | US-07 |
+| 🟢 MVP | System calculates AI semantic match score (0–100) per candidate-job pair | US-06 |
+| 🟡 R2 | System generates short score explanation (top 3 strengths, top 2 gaps) | US-06 |
+| 🟡 R2 | Flag low-confidence parsed fields for manual recruiter review | US-05 |
 
 ---
 
@@ -151,8 +151,8 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 | Priority | Task | User Story Ref |
 |---|---|---|
 | 🟢 MVP | View the Kanban pipeline for a job opening with all candidates per stage | — |
-| 🟢 MVP | Sort and filter candidates by match score, application date, or source channel | US-05 |
-| 🟢 MVP | Open a candidate profile card (parsed CV, scores, knockout answers, timeline) | US-04 |
+| 🟢 MVP | Sort and filter candidates by match score, application date, or source channel | US-06 |
+| 🟢 MVP | Open a candidate profile card (parsed CV, scores, knockout answers, timeline) | US-08 |
 | 🟡 R2 | Add an internal note to a candidate's profile (visible to team, not to candidate) | — |
 | 🟡 R2 | Tag a candidate (e.g., "strong technical", "culture risk") | — |
 | 🔵 R3 | Bulk-advance or bulk-reject a set of selected candidates | — |
@@ -164,10 +164,10 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 | Priority | Task | User Story Ref |
 |---|---|---|
 | 🟢 MVP | Drag candidate card to next stage (e.g., Screening → Test) | — |
-| 🟢 MVP | Reject a candidate and optionally add to talent pool with tags | US-12 |
-| 🟢 MVP | System sends rejection email to candidate (configurable template) | US-12 |
+| 🟢 MVP | Reject a candidate and optionally add to talent pool with tags | US-15 |
+| 🟢 MVP | System sends rejection email to candidate (configurable template) | US-15 |
 | 🟡 R2 | Send a personalized message to a candidate from within the platform | — |
-| 🔵 R3 | Search talent pool for previously rejected candidates by skill/tag | US-12 |
+| 🔵 R3 | Search talent pool for previously rejected candidates by skill/tag | US-15 |
 
 ---
 
@@ -181,13 +181,13 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 | Priority | Task | User Story Ref |
 |---|---|---|
-| 🟢 MVP | Select or create an assessment for the role (technical, psychometric, coding) | US-07 |
-| 🟢 MVP | Send assessment link to one or multiple candidates with a deadline | US-07 |
-| 🟢 MVP | Candidate completes test in-platform; system auto-scores and marks pass/fail | US-07 |
-| 🟢 MVP | Recruiter sees test result on candidate card and moves to next stage or rejects | US-07 |
-| 🟡 R2 | Generate assessment questions with AI from a topic/skill description | US-07 |
-| 🟡 R2 | Configure test time limit; auto-submit on timeout | US-07 |
-| 🔵 R3 | Build a reusable question bank per department or role family | US-07 |
+| 🟢 MVP | Select or create an assessment for the role (technical, psychometric, coding) | US-09 |
+| 🟢 MVP | Send assessment link to one or multiple candidates with a deadline | US-09 |
+| 🟢 MVP | Candidate completes test in-platform; system auto-scores and marks pass/fail | US-09 |
+| 🟢 MVP | Recruiter sees test result on candidate card and moves to next stage or rejects | US-09 |
+| 🟡 R2 | Generate assessment questions with AI from a topic/skill description | US-09 |
+| 🟡 R2 | Configure test time limit; auto-submit on timeout | US-09 |
+| 🔵 R3 | Build a reusable question bank per department or role family | US-09 |
 
 ---
 
@@ -195,12 +195,12 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 | Priority | Task | User Story Ref |
 |---|---|---|
-| 🟢 MVP | Select interviewers for the interview panel | US-08 |
-| 🟢 MVP | System reads calendar availability of all selected interviewers | US-08 |
-| 🟢 MVP | Recruiter selects a time slot from system-suggested available windows | US-08 |
-| 🟢 MVP | Candidate receives self-scheduling link and confirms a time slot | US-08 |
-| 🟢 MVP | Calendar invite with video link (Google Meet / Zoom) is sent to all participants | US-08 |
-| 🟡 R2 | System sends 24h reminder to all participants | US-08 |
+| 🟢 MVP | Select interviewers for the interview panel | US-10 |
+| 🟢 MVP | System reads calendar availability of all selected interviewers | US-10 |
+| 🟢 MVP | Recruiter selects a time slot from system-suggested available windows | US-10 |
+| 🟢 MVP | Candidate receives self-scheduling link and confirms a time slot | US-10 |
+| 🟢 MVP | Calendar invite with video link (Google Meet / Zoom) is sent to all participants | US-10 |
+| 🟡 R2 | System sends 24h reminder to all participants | US-10 |
 | 🟡 R2 | Recruiter reschedules interview from the platform (updates calendar) | — |
 | 🔵 R3 | System proposes multi-stage interview sequence (e.g., 3 rounds in one week) | — |
 
@@ -210,12 +210,12 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 | Priority | Task | User Story Ref |
 |---|---|---|
-| 🟢 MVP | Interviewer receives in-app and email prompt to complete scorecard after interview | US-09 |
-| 🟢 MVP | Interviewer fills in competency ratings (1–5) and written notes per criterion | US-09 |
-| 🟢 MVP | Interviewer submits overall recommendation (Strong Yes / Yes / Neutral / No / Strong No) | US-09 |
-| 🟡 R2 | Recruiter can see which interviewers have not yet submitted feedback | US-09 |
+| 🟢 MVP | Interviewer receives in-app and email prompt to complete scorecard after interview | US-11 |
+| 🟢 MVP | Interviewer fills in competency ratings (1–5) and written notes per criterion | US-11 |
+| 🟢 MVP | Interviewer submits overall recommendation (Strong Yes / Yes / Neutral / No / Strong No) | US-11 |
+| 🟡 R2 | Recruiter can see which interviewers have not yet submitted feedback | US-11 |
 | 🟡 R2 | System generates AI-assisted interview summary from notes or transcript | — |
-| 🟡 R2 | Scorecard template is configurable per job or pipeline stage | US-09 |
+| 🟡 R2 | Scorecard template is configurable per job or pipeline stage | US-11 |
 | 🔵 R3 | Interviewer adds private note visible only to themselves before panel consolidation | — |
 
 ---
@@ -224,11 +224,11 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 | Priority | Task | User Story Ref |
 |---|---|---|
-| 🟢 MVP | Hiring Manager views side-by-side scorecards from all interviewers | US-10 |
-| 🟢 MVP | Summary shows recommendation distribution (count of Yes/No votes) and avg scores | US-10 |
-| 🟢 MVP | Hiring Manager marks candidate as Advance or Reject with a decision note | US-10 |
+| 🟢 MVP | Hiring Manager views side-by-side scorecards from all interviewers | US-12 |
+| 🟢 MVP | Summary shows recommendation distribution (count of Yes/No votes) and avg scores | US-12 |
+| 🟢 MVP | Hiring Manager marks candidate as Advance or Reject with a decision note | US-12 |
 | 🟡 R2 | Hiring Manager compares two finalist candidates side by side | — |
-| 🔵 R3 | Decision and reasoning are recorded in the candidate timeline with timestamp | US-10 |
+| 🔵 R3 | Decision and reasoning are recorded in the candidate timeline with timestamp | US-12 |
 
 ---
 
@@ -242,13 +242,13 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 | Priority | Task | User Story Ref |
 |---|---|---|
-| 🟢 MVP | Recruiter selects an offer template for the role | US-11 |
-| 🟢 MVP | Recruiter fills in salary, currency, benefits, and start date | US-11 |
-| 🟢 MVP | System generates a formatted PDF offer letter | US-11 |
-| 🟢 MVP | System sends offer via email with an e-signature request | US-11 |
-| 🟡 R2 | Recruiter previews the offer document before sending | US-11 |
-| 🟡 R2 | System sends automatic reminder to candidate if not signed within 3 days | US-11 |
-| 🔵 R3 | Offer templates are configurable per role family or department | US-11 |
+| 🟢 MVP | Recruiter selects an offer template for the role | US-14 |
+| 🟢 MVP | Recruiter fills in salary, currency, benefits, and start date | US-14 |
+| 🟢 MVP | System generates a formatted PDF offer letter | US-14 |
+| 🟢 MVP | System sends offer via email with an e-signature request | US-14 |
+| 🟡 R2 | Recruiter previews the offer document before sending | US-14 |
+| 🟡 R2 | System sends automatic reminder to candidate if not signed within 3 days | US-14 |
+| 🔵 R3 | Offer templates are configurable per role family or department | US-14 |
 
 ---
 
@@ -256,9 +256,9 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 | Priority | Task | User Story Ref |
 |---|---|---|
-| 🟢 MVP | Recruiter tracks offer status: draft → sent → accepted / rejected / expired | US-11 |
-| 🟢 MVP | Candidate signs offer electronically; system records signature date | US-11 |
-| 🟡 R2 | If candidate rejects, recruiter can reopen process or select next finalist | US-12 |
+| 🟢 MVP | Recruiter tracks offer status: draft → sent → accepted / rejected / expired | US-14 |
+| 🟢 MVP | Candidate signs offer electronically; system records signature date | US-14 |
+| 🟡 R2 | If candidate rejects, recruiter can reopen process or select next finalist | US-15 |
 | 🟡 R2 | System notifies recruiter instantly when offer is signed or rejected | — |
 | 🔵 R3 | Offer data (salary, start date) is pre-populated for HRIS export | — |
 
@@ -269,8 +269,8 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 | Priority | Task | User Story Ref |
 |---|---|---|
 | 🟢 MVP | System marks the job as "Hired" and closes all active publications | — |
-| 🟢 MVP | Remaining pipeline candidates receive rejection notifications (configurable template) | US-12 |
-| 🟡 R2 | Recruiter adds strong runners-up to talent pool with tags | US-12 |
+| 🟢 MVP | Remaining pipeline candidates receive rejection notifications (configurable template) | US-15 |
+| 🟡 R2 | Recruiter adds strong runners-up to talent pool with tags | US-15 |
 | 🔵 R3 | System triggers HRIS data handoff (candidate profile + start date) | — |
 
 ---
@@ -285,10 +285,10 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 
 | Priority | Task | User Story Ref |
 |---|---|---|
-| 🟢 MVP | View dashboard: time-to-fill per job, per department, company-wide | US-13 |
-| 🟢 MVP | View stage conversion rates (drop-off % at each pipeline stage) | US-13 |
-| 🟡 R2 | View source effectiveness: candidate volume and hired rate per channel | US-13 |
-| 🟡 R2 | View bottleneck alerts: stages with candidates idle > configurable threshold | US-13 |
+| 🟢 MVP | View dashboard: time-to-fill per job, per department, company-wide | US-17 |
+| 🟢 MVP | View stage conversion rates (drop-off % at each pipeline stage) | US-17 |
+| 🟡 R2 | View source effectiveness: candidate volume and hired rate per channel | US-18 |
+| 🟡 R2 | View bottleneck alerts: stages with candidates idle > configurable threshold | US-17 |
 | 🔵 R3 | Export hiring report as PDF or CSV for leadership review | — |
 | 🔵 R3 | View DEI metrics: demographic breakdown at each pipeline stage | — |
 
@@ -299,9 +299,9 @@ Tech startups and scale-ups (10–1,000 employees) running active hiring pipelin
 | Priority | Task | User Story Ref |
 |---|---|---|
 | 🟡 R2 | Update job template based on what worked (description, filters, pipeline) | US-01 |
-| 🟡 R2 | Update scorecard template based on interviewer feedback quality | US-09 |
-| 🔵 R3 | Review AI match score accuracy (how many top-scored candidates were hired?) | US-05 |
-| 🔵 R3 | Configure proactive bottleneck alert thresholds per stage | US-13 |
+| 🟡 R2 | Update scorecard template based on interviewer feedback quality | US-11 |
+| 🔵 R3 | Review AI match score accuracy (how many top-scored candidates were hired?) | US-06 |
+| 🔵 R3 | Configure proactive bottleneck alert thresholds per stage | US-17 |
 
 ---
 

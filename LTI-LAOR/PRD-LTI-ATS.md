@@ -125,7 +125,7 @@ LTI ATS is a cloud-native, AI-embedded Applicant Tracking System delivered as a 
 
 ### Core Workflow
 
-```
+```text
 Job Creation (AI-assisted) → Multichannel Publishing → Automated Candidate Intake →
 AI Screening + Filters → Collaborative Evaluation (Tests + Interviews + Scorecards) →
 Offer Generation (e-sign) → Hiring → HRIS Handoff
@@ -238,7 +238,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ### Epic 2: Candidate Intake & AI Screening
 
-**US-04 — Automatic CV Parsing**  
+**US-05 — Automatic CV Parsing**  
 *As a Recruiter, I want CVs to be automatically parsed into structured profiles so that I don't spend time manually extracting data.*
 
 **Acceptance Criteria:**
@@ -249,7 +249,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ---
 
-**US-05 — AI Semantic Match Score**  
+**US-06 — AI Semantic Match Score**  
 *As a Recruiter, I want each application to show an AI-generated match score so that I can prioritize candidates with the best fit.*
 
 **Acceptance Criteria:**
@@ -260,7 +260,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ---
 
-**US-06 — Duplicate & Blacklist Detection**  
+**US-07 — Duplicate & Blacklist Detection**  
 *As a Recruiter, I want the system to detect duplicate applications and blacklisted candidates so that I don't process invalid applications.*
 
 **Acceptance Criteria:**
@@ -273,7 +273,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ### Epic 3: Collaborative Evaluation
 
-**US-07 — Online Assessment**  
+**US-09 — Send Online Assessment**  
 *As a Recruiter, I want to send an online test to a candidate so that I can evaluate technical skills before scheduling interviews.*
 
 **Acceptance Criteria:**
@@ -286,7 +286,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ---
 
-**US-08 — Smart Interview Scheduling**  
+**US-10 — Smart Interview Scheduling**  
 *As a Recruiter, I want to schedule interviews using calendar availability so that I can avoid back-and-forth coordination.*
 
 **Acceptance Criteria:**
@@ -298,7 +298,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ---
 
-**US-09 — Competency-Based Scorecard**  
+**US-11 — Competency-Based Scorecard Submission**  
 *As an Interviewer, I want to complete a structured scorecard after each interview so that my feedback is captured consistently and on time.*
 
 **Acceptance Criteria:**
@@ -310,7 +310,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ---
 
-**US-10 — Decision Panel**  
+**US-12 — Decision Panel Review**  
 *As a Hiring Manager, I want to see a consolidated panel of all interviewer feedback so that I can make a final hiring decision quickly and confidently.*
 
 **Acceptance Criteria:**
@@ -323,7 +323,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ### Epic 4: Offer & Hiring
 
-**US-11 — Offer Letter Generation**  
+**US-14 — Offer Letter Generation & E-Signature**  
 *As a Recruiter, I want to generate an offer letter from a template so that I can extend offers quickly and consistently.*
 
 **Acceptance Criteria:**
@@ -335,7 +335,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ---
 
-**US-12 — Candidate Rejection with Talent Pool Archiving**  
+**US-15 — Candidate Rejection & Talent Pool Archiving**  
 *As a Recruiter, I want rejected candidates to be optionally added to a talent pool so that I can consider them for future openings.*
 
 **Acceptance Criteria:**
@@ -348,7 +348,7 @@ Event-driven microservices on Kubernetes (AWS/GCP), PostgreSQL per service with 
 
 ### Epic 5: Analytics & Reporting
 
-**US-13 — Time-to-Hire Dashboard**  
+**US-17 — Time-to-Hire Dashboard**  
 *As an HR Director, I want to see a real-time time-to-hire dashboard so that I can identify bottlenecks and optimize the hiring process.*
 
 **Acceptance Criteria:**
