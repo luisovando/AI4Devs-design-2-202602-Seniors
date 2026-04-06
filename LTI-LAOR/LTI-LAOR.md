@@ -370,10 +370,10 @@ UC10 --> HRIS
 |---|---|---|
 | id | UUID | Unique identifier |
 | company_id | UUID (FK) | Reference to Company |
-| email | VARCHAR(255) | Email — UNIQUE per company: `UNIQUE (company_id, email)` |
+| email | VARCHAR(255) | Email — UNIQUE per company via functional index on `(company_id, lower(email))` (case-insensitive) |
 | first_name | VARCHAR(100) | First name |
 | last_name | VARCHAR(100) | Last name |
-| phone | VARCHAR(50) | Phone number — part of secondary dedupe index: `UNIQUE (company_id, first_name, last_name, phone)` |
+| phone | VARCHAR(50) | Phone number (nullable) — part of secondary dedupe index on `(company_id, first_name, last_name, phone) WHERE phone IS NOT NULL`; NULL phones are excluded from uniqueness checks |
 | linkedin_url | VARCHAR(500) | LinkedIn profile |
 | resume_url | VARCHAR(500) | Stored CV URL |
 | resume_parsed_data | JSONB | Extracted CV data (skills, experience, education) |
@@ -594,22 +594,26 @@ DDL-level UNIQUE constraints are required on two tables to prevent duplicate row
 #### Candidate deduplication
 
 ```sql
--- Primary deduplication: one email address per tenant
-ALTER TABLE candidate
-  ADD CONSTRAINT uq_candidate_company_email
-  UNIQUE (company_id, email);
+-- Primary deduplication: one email address per tenant, case-insensitive.
+-- ALTER TABLE … UNIQUE cannot index expressions, so a functional unique index
+-- is used instead. lower(email) normalises "Alice@Co.com" and "alice@co.com"
+-- to the same key within the same company.
+CREATE UNIQUE INDEX CONCURRENTLY uq_candidate_company_email
+  ON candidate (company_id, lower(email));
 
--- Secondary deduplication: same name + phone within a tenant
--- Catches re-submissions where the candidate uses a different email
-ALTER TABLE candidate
-  ADD CONSTRAINT uq_candidate_company_name_phone
-  UNIQUE (company_id, first_name, last_name, phone);
+-- Secondary deduplication: same name + phone within a tenant.
+-- NULL phones are excluded via the WHERE predicate so that candidates
+-- without a phone number are never falsely flagged as duplicates of each other.
+CREATE UNIQUE INDEX CONCURRENTLY uq_candidate_company_name_phone
+  ON candidate (company_id, first_name, last_name, phone)
+  WHERE phone IS NOT NULL;
 ```
 
 > **Migration note:** Before creating these indexes, merge or archive existing duplicates within the same `company_id`:
-> 1. Identify duplicates: `SELECT company_id, email, COUNT(*) FROM candidate GROUP BY company_id, email HAVING COUNT(*) > 1;`
+> 1. Identify email duplicates (case-insensitive): `SELECT company_id, lower(email), COUNT(*) FROM candidate GROUP BY company_id, lower(email) HAVING COUNT(*) > 1;`
 > 2. For each duplicate set, keep the earliest `created_at` record; update all `JobApplication` rows that reference the discarded `candidate_id` to point to the surviving one; then delete the duplicates.
-> 3. Repeat the same process for the `(company_id, first_name, last_name, phone)` group before adding the second constraint.
+> 3. Repeat for the name+phone group (only rows where `phone IS NOT NULL`): `SELECT company_id, first_name, last_name, phone, COUNT(*) FROM candidate WHERE phone IS NOT NULL GROUP BY company_id, first_name, last_name, phone HAVING COUNT(*) > 1;`
+> 4. Run both `CREATE UNIQUE INDEX CONCURRENTLY` statements after deduplication; `CONCURRENTLY` avoids a full table lock in production.
 
 #### JobApplication deduplication
 
