@@ -370,10 +370,10 @@ UC10 --> HRIS
 |---|---|---|
 | id | UUID | Unique identifier |
 | company_id | UUID (FK) | Reference to Company |
-| email | VARCHAR(255) | Email |
+| email | VARCHAR(255) | Email — UNIQUE per company: `UNIQUE (company_id, email)` |
 | first_name | VARCHAR(100) | First name |
 | last_name | VARCHAR(100) | Last name |
-| phone | VARCHAR(50) | Phone number |
+| phone | VARCHAR(50) | Phone number — part of secondary dedupe index: `UNIQUE (company_id, first_name, last_name, phone)` |
 | linkedin_url | VARCHAR(500) | LinkedIn profile |
 | resume_url | VARCHAR(500) | Stored CV URL |
 | resume_parsed_data | JSONB | Extracted CV data (skills, experience, education) |
@@ -388,9 +388,9 @@ UC10 --> HRIS
 | Attribute | Type | Description |
 |---|---|---|
 | id | UUID | Unique identifier |
-| job_id | UUID (FK) | Reference to Job |
-| candidate_id | UUID (FK) | Reference to Candidate |
-| publication_id | UUID (FK) | Source channel |
+| job_id | UUID (FK) | Reference to Job — part of application dedupe: `UNIQUE (job_id, candidate_id)` |
+| candidate_id | UUID (FK) | Reference to Candidate — enforces one application per candidate per job |
+| publication_id | UUID (FK) | Source channel — included in channel-scoped variant: see constraints note |
 | current_stage_id | UUID (FK) | Current pipeline stage |
 | status | ENUM | Status (active, hired, rejected, withdrawn) |
 | ai_match_score | DECIMAL(5,2) | AI matching score (0-100) |
@@ -584,6 +584,55 @@ UC10 --> HRIS
 - **Scorecard** 1:N **ScorecardCriteria** — A scorecard has multiple evaluated criteria.
 - **Assessment** 1:N **AssessmentResult** — A test can be taken by multiple candidates.
 - **User** 1:N **Notification** — A user receives many notifications.
+
+---
+
+### 3.4 Uniqueness Constraints & Deduplication
+
+DDL-level UNIQUE constraints are required on two tables to prevent duplicate rows that application-layer checks alone cannot guarantee under concurrent inserts.
+
+#### Candidate deduplication
+
+```sql
+-- Primary deduplication: one email address per tenant
+ALTER TABLE candidate
+  ADD CONSTRAINT uq_candidate_company_email
+  UNIQUE (company_id, email);
+
+-- Secondary deduplication: same name + phone within a tenant
+-- Catches re-submissions where the candidate uses a different email
+ALTER TABLE candidate
+  ADD CONSTRAINT uq_candidate_company_name_phone
+  UNIQUE (company_id, first_name, last_name, phone);
+```
+
+> **Migration note:** Before creating these indexes, merge or archive existing duplicates within the same `company_id`:
+> 1. Identify duplicates: `SELECT company_id, email, COUNT(*) FROM candidate GROUP BY company_id, email HAVING COUNT(*) > 1;`
+> 2. For each duplicate set, keep the earliest `created_at` record; update all `JobApplication` rows that reference the discarded `candidate_id` to point to the surviving one; then delete the duplicates.
+> 3. Repeat the same process for the `(company_id, first_name, last_name, phone)` group before adding the second constraint.
+
+#### JobApplication deduplication
+
+```sql
+-- One application per candidate per job (cross-channel)
+ALTER TABLE job_application
+  ADD CONSTRAINT uq_jobapplication_job_candidate
+  UNIQUE (job_id, candidate_id);
+```
+
+If the business rule allows one application **per channel** (e.g., a candidate may re-apply through a different job board for the same job), replace the constraint above with the channel-scoped variant:
+
+```sql
+-- One application per candidate per job per publication channel
+ALTER TABLE job_application
+  ADD CONSTRAINT uq_jobapplication_job_candidate_publication
+  UNIQUE (job_id, candidate_id, publication_id);
+```
+
+> **Migration note:** Before adding the constraint, resolve existing duplicates:
+> 1. Identify: `SELECT job_id, candidate_id, COUNT(*) FROM job_application GROUP BY job_id, candidate_id HAVING COUNT(*) > 1;`
+> 2. For each duplicate pair, keep the record with the earlier `applied_at`; soft-delete or set `status = 'withdrawn'` on the others rather than hard-deleting, to preserve audit history.
+> 3. After deduplication, create the unique index `CONCURRENTLY` in production to avoid table locks.
 
 ---
 

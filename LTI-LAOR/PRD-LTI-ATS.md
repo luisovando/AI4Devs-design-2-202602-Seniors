@@ -386,7 +386,7 @@ The following are explicitly excluded from the first release:
 | OpenAI API (or equivalent LLM) for AI features | External | Available now | Cost per API call must stay within unit economics ($0.02–0.05/application) |
 | Google Calendar API + Outlook OAuth | External | Available now | OAuth scopes approval can delay |
 | LinkedIn Job Posting API | External | 2–4 week approval | LinkedIn API access requires partner program enrollment |
-| pgvector extension (PostgreSQL) | Infrastructure | Sprint 1 | Needs Postgres 15+ and GPU-enabled instance for embedding generation |
+| pgvector extension (PostgreSQL) | Infrastructure | Sprint 1 | Needs Postgres 15+ (standard CPU instance — pgvector itself has no GPU requirement); the separate embedding generation service that produces vectors does require GPU capacity or a GPU-backed API endpoint |
 | e-Signature provider (DocuSign or HelloSign) | External | Available now | Integration + legal review needed |
 
 ### Risks & Mitigations
