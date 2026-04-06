@@ -13,7 +13,7 @@
 Tech startups and scale-ups (10–1,000 employees) running active hiring pipelines — specifically TA teams using a patchwork of spreadsheets, email, and basic ATS tools.
 
 ### Primary Persona: Rachel — Recruiter at a Series A Startup
-35, HR Generalist who owns the full hiring lifecycle. Uses Slack, Notion, and Google Workspace daily. Manages 5–15 open roles per quarter. Frustrated by manual CV screening, chasing feedback from hiring managers over email, and ATS tools that don't fit her workflow. Wants to move the right candidates through faster without losing context.
+35-year-old HR Generalist who owns the full hiring lifecycle. Uses Slack, Notion, and Google Workspace daily. Manages 5–15 open roles per quarter. Frustrated by manual CV screening, chasing feedback from hiring managers over email, and ATS tools that don't fit her workflow. Wants to move the right candidates through faster without losing context.
 
 ### Narrative
 > Rachel needs to take a new role from requisition to hired — sourcing, screening, evaluating, and closing the right candidate — as fast as possible, with full traceability and zero chasing.
