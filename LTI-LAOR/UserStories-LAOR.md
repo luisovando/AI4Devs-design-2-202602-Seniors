@@ -671,27 +671,62 @@
 
 ---
 
+## Prioritization Framework
+
+**Framework chosen: MoSCoW** — selected for pre-PMF startup context (no usage metrics yet, small team, ruthless focus needed). Forces hard Must/Should/Could cuts without requiring data that doesn't exist yet. Maps directly to release slices R1/R2/R3.
+
+**Fibonacci effort estimation** applied to all stories (scale: 1, 2, 3, 5, 8, 13…). Linear estimate scale caps at 8; stories estimated at 13 points are split into sub-tasks of 3–5 pts each (see splits below).
+
+**MoSCoW → Linear priority mapping:**
+
+| MoSCoW | Linear Priority | Meaning |
+|---|---|---|
+| Must | Urgent | Launch-blocking; product doesn't work without it |
+| Should | High | Important but not launch-blocking |
+| Could | Medium | Defer if pressured; nice to have |
+| Won't | Low | Explicitly out of scope this cycle |
+
+---
+
 ## Backlog Summary
 
-| Story | Epic | Persona | Priority |
-|---|---|---|---|
-| US-01 — AI-Assisted Job Description | Job Posting | Rachel | 🟢 MVP |
-| US-02 — Configure Knockout Questions | Job Posting | Rachel | 🟢 MVP |
-| US-03 — Multichannel Job Publication | Job Posting | Rachel | 🟢 MVP |
-| US-04 — Configure Hiring Pipeline | Job Posting | Rachel | 🟢 MVP |
-| US-05 — Automatic CV Parsing | Candidate Intake | Rachel | 🟢 MVP |
-| US-06 — AI Semantic Match Score | Candidate Intake | Rachel | 🟢 MVP |
-| US-07 — Duplicate & Blacklist Detection | Candidate Intake | Rachel | 🟢 MVP |
-| US-08 — Candidate Pipeline View & Triage | Candidate Intake | Rachel | 🟢 MVP |
-| US-09 — Send Online Assessment | Evaluation | Rachel | 🟢 MVP |
-| US-10 — Smart Interview Scheduling | Evaluation | Rachel | 🟢 MVP |
-| US-11 — Competency-Based Scorecard | Evaluation | Marcus | 🟢 MVP |
-| US-12 — Decision Panel Review | Evaluation | Marcus | 🟢 MVP |
-| US-13 — AI-Assisted Interview Summary | Evaluation | Marcus | 🟡 R2 |
-| US-14 — Offer Letter Generation & E-Signature | Offer & Hiring | Rachel | 🟢 MVP |
-| US-15 — Candidate Rejection & Talent Pool | Offer & Hiring | Rachel | 🟢 MVP |
-| US-16 — Close Job & Process Wrap-Up | Offer & Hiring | Rachel | 🟡 R2 |
-| US-17 — Time-to-Hire Dashboard | Analytics | Ana | 🟢 MVP |
-| US-18 — Source Effectiveness Report | Analytics | Ana | 🟡 R2 |
-| US-19 — Self-Service Onboarding Checklist | Activation | Rachel | 🟢 MVP |
-| US-20 — Role-Based Access & Team Invitation | Activation | Rachel | 🟢 MVP |
+> Stories marked **[split]** have been decomposed into 3–5 pt sub-tasks in Linear (AI4-25 to AI4-36).
+
+| Story | Epic | Persona | MoSCoW | Pts | Linear |
+|---|---|---|---|---|---|
+| US-01 — AI-Assisted Job Description | Job Posting | Rachel | **Must** | 8 | AI4-5 |
+| US-02 — Configure Knockout Questions | Job Posting | Rachel | **Must** | 3 | AI4-6 |
+| US-03 — Multichannel Job Publication **[split]** | Job Posting | Rachel | **Must** | 13 | AI4-7 |
+| ↳ US-03a — Career Site & Job Portal Publication | Job Posting | Rachel | Must | 3 | AI4-25 |
+| ↳ US-03b — LinkedIn Job Board Integration | Job Posting | Rachel | Must | 5 | AI4-26 |
+| ↳ US-03c — Indeed Integration & Source Attribution | Job Posting | Rachel | Should | 5 | AI4-27 |
+| US-04 — Configure Hiring Pipeline | Job Posting | Rachel | **Must** | 5 | AI4-8 |
+| US-05 — Automatic CV Parsing | Candidate Intake | Rachel | **Must** | 8 | AI4-9 |
+| US-06 — AI Semantic Match Score **[split]** | Candidate Intake | Rachel | **Must** | 13 | AI4-10 |
+| ↳ US-06a — Embedding Generation Pipeline & Vector Storage | Candidate Intake | Rachel | Must | 5 | AI4-28 |
+| ↳ US-06b — Match Score Computation & Candidate Card Display | Candidate Intake | Rachel | Must | 5 | AI4-29 |
+| ↳ US-06c — Score Sorting & Recalculation on Requirements Update | Candidate Intake | Rachel | Should | 3 | AI4-30 |
+| US-07 — Duplicate & Blacklist Detection | Candidate Intake | Rachel | **Must** | 5 | AI4-11 |
+| US-08 — Candidate Pipeline View & Triage | Candidate Intake | Rachel | **Must** | 8 | AI4-12 |
+| US-09 — Send Online Assessment | Evaluation | Rachel | **Could** | 8 | AI4-13 |
+| US-10 — Smart Interview Scheduling **[split]** | Evaluation | Rachel | **Must** | 13 | AI4-14 |
+| ↳ US-10a — Calendar OAuth & Availability Aggregation | Evaluation | Rachel | Must | 5 | AI4-31 |
+| ↳ US-10b — Candidate Self-Scheduling Link & Calendar Event Creation | Evaluation | Rachel | Must | 5 | AI4-32 |
+| ↳ US-10c — Interview Reminders & Notification Flow | Evaluation | Rachel | Should | 3 | AI4-33 |
+| US-11 — Competency-Based Scorecard | Evaluation | Marcus | **Must** | 5 | AI4-15 |
+| US-12 — Decision Panel Review | Evaluation | Marcus | **Must** | 5 | AI4-16 |
+| US-13 — AI-Assisted Interview Summary | Evaluation | Marcus | **Could** | 8 | AI4-17 |
+| US-14 — Offer Letter Generation & E-Signature **[split]** | Offer & Hiring | Rachel | **Must** | 13 | AI4-18 |
+| ↳ US-14a — Offer Letter Template Engine & PDF Generation | Offer & Hiring | Rachel | Must | 5 | AI4-34 |
+| ↳ US-14b — E-Signature Flow & Offer Delivery | Offer & Hiring | Rachel | Must | 5 | AI4-35 |
+| ↳ US-14c — Offer Status Tracking, Reminders & Expiry | Offer & Hiring | Rachel | Should | 3 | AI4-36 |
+| US-15 — Candidate Rejection & Talent Pool | Offer & Hiring | Rachel | **Must** | 5 | AI4-19 |
+| US-16 — Close Job & Process Wrap-Up | Offer & Hiring | Rachel | **Could** | 8 | AI4-20 |
+| US-17 — Time-to-Hire Dashboard | Analytics | Ana | **Should** | 8 | AI4-21 |
+| US-18 — Source Effectiveness Report | Analytics | Ana | **Could** | 5 | AI4-22 |
+| US-19 — Self-Service Onboarding Checklist | Activation | Rachel | **Must** | 5 | AI4-23 |
+| US-20 — Role-Based Access & Team Invitation | Activation | Rachel | **Must** | 8 | AI4-24 |
+
+**Total Must points (R1 MVP):** 108 pts across 20 deliverables (16 stories + 4 Must sub-tasks replacing split parents)
+**Total Should points (R2):** 19 pts — US-03c, US-06c, US-10c, US-14c, US-17
+**Total Could points (R3):** 21 pts — US-09, US-13, US-16, US-18
